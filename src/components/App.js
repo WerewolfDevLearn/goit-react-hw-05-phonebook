@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { v4 as uuid4 } from 'uuid';
 import ContactForm from './ContactForm/ContactForm';
 import ContactsList from './ContactList/ContactList';
+import Layout from './Layout/Layout';
 import Filter from './Filter/Filter';
 import AppStl from './App.module.css';
 
@@ -68,9 +69,7 @@ export default class App extends Component {
 
     return (
       <>
-        <div className={AppStl.container}>
-          <h2 className={AppStl.heading}>PhoneBook</h2>
-
+        <Layout>
           <ContactForm onAddContact={this.addContact} />
 
           <h2 className={AppStl.heading}>Contacts</h2>
@@ -80,7 +79,7 @@ export default class App extends Component {
           {contacts.length > 0 && (
             <ContactsList contacts={contacts} visibleContacts={visibleContacts} onRemoveItem={this.removeContact} />
           )}
-        </div>
+        </Layout>
       </>
     );
   }
